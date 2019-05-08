@@ -8,12 +8,18 @@ namespace CodingPolygon
     partial class Program
     {
 
+        public delegate void MyErrorDelegate();
         static void Main(string[] args)
         {
+            Subscriber subs = new Subscriber();
+            subs.Error(); //throws an error
+            ErrorHandler(subs.ErrDel); //"Catches" an error
+
         }
-        public static Delegate a(Delegate b)
+
+        private static void ErrorHandler(Delegate errorDelegate)
         {
-            return null
+            Console.WriteLine("Catched the error");
         }
     }
 }
